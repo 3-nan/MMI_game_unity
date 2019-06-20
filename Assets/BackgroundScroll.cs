@@ -7,8 +7,9 @@ public class BackgroundScroll : MonoBehaviour {
     Material material;
     Vector2 offset;
 
-    public int xVelocity, yVelocity;
-    void Awake()
+    public float xVelocity, yVelocity;
+
+    private void Awake()
     {
         material = GetComponent<Renderer>().material;
     }
@@ -16,7 +17,7 @@ public class BackgroundScroll : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        offset = newVector2(xVelocity, yVelocity);
+        offset = new Vector2(xVelocity, yVelocity);
     }
 
     // Update is called once per frame
