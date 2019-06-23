@@ -17,8 +17,12 @@ public class BoxAdding : MonoBehaviour
 		if (Input.GetKeyDown(sequence[sequenceIndex])) {
 			if (++sequenceIndex == sequence.Length) {
 				sequenceIndex = 0;
-		     		BoxBehavior.enable = true;
+		     		BoxBehavior.codePressed = true;
 		  	}
-	     	} else if (Input.anyKeyDown) sequenceIndex = 0;
+	     	} else if (Input.anyKeyDown)
+		{
+			sequenceIndex = 0;
+			//BoxBehavior.codePressed = false;
+		}
 	}
 }

@@ -5,24 +5,32 @@ using UnityEngine;
 public class BoxBehavior : MonoBehaviour
 {
 	public GameObject box;
-	public static bool enable = false;
+	public static bool codePressed;
+	Camera cam;
 	
-	//if (Input.GetKey (KeyCode.A)) {
-	//	print("You pressed the A Key");
-	//}
+	// Start is called before the first frame update
+	void Start() 
+	{
+		cam = Camera.main;
+	}
 
     	// Update is called once per frame
     	void Update()
    	{
- 		if(enable)
-			box.SetActive(true);
-		else
-			box.SetActive(false);
-	}
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+		Vector3 viewPos = cam.WorldToViewportPoint(box.transform.position);
+		if (viewPos.x >= 0F && viewPos.x <= 1F) {
+			if (box.activeSelf) {
+				box.SetActive(true);
+			}
+			
+			if (codePressed && !box.activeSelf) {
+				box.SetActive(true);	
+			} else {
+				codePressed = false;
+			}
 
+		} else {
+			box.SetActive(false);
+		}
+	}
 }
