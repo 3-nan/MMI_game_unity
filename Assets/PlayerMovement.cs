@@ -17,17 +17,17 @@ public class PlayerMovement : MonoBehaviour
 
     // Score
     public Text scoreText;
-    // public Text oldscoreText;
+    public Text oldscoreText;
 
     private Rigidbody rb;
-    private float score = 0.0f;
+    private float score;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         score = 0.0f;
         SetScoreText ();
-        // oldscoreText.text = "";
+        oldscoreText.text = "";
     }
 
     // Update is called once per frame
