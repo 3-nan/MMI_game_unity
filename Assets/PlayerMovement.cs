@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,9 +15,19 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    // Score
+    public Text scoreText;
+    public Text oldscoreText;
+
+    private Rigidbody rb;
+    private float score;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        score = 0.0f;
+        SetScoreText ();
+        oldscoreText.text = "";
     }
 
     // Update is called once per frame
@@ -50,6 +61,13 @@ public class PlayerMovement : MonoBehaviour
         // Move our character
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
+        score = score + 0.01f;
+        SetScoreText();
 
+    }
+
+    void SetScoreText ()
+    {
+        scoreText.text = "Score: " + ((int)score).ToString();
     }
 }
